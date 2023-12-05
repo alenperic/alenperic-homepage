@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0YR48DN67Z"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-0YR48DN67Z');
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="icon" type="image/x-icon" href="./img/favicon.svg" />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+    <title>Alen Peric Homepage</title>
+    <!-- Additional meta tags and styles for the GitHub section -->
+    <meta
+      name="description"
+      content="Alen Peric's personal website, hosting social media links and resume. Built with the three.js library."
+    />
+    <meta
+      name="keywords"
+      content="alenperic, Alen, Peric, homepage, website, AlenPeric, ALEN, PERIC, ALENPERIC, cyber, security, cybersecurity, intelligence, analyst, linkedin, github"
+    />
+    <meta name="author" content="alenperic" />
+    <style>
+      .header {
+       position: absolute;
+       font-family: 'Roboto', sans-serif;
+       font-size: 30px;
+       top: 10px;
+       left: 10px;
+       z-index: 100; /* Ensure this is higher than the canvas z-index */
+      }
+
+      .header img {
+        width: 30px;
+        height: 30px;
+
+        vertical-align: middle;
+        margin-right: 10px;
+      }
+      .header a {
+        color: white;
+        text-decoration: none;
+        vertical-align: middle;
+      }
+
+      /* Updated styles for social links */
+      .social-links {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 100;
+      }
+
+      .social-links img {
+        width: 30px;
+        height: 30px;
+        vertical-align: middle;
+        margin-right: 10px;
+      }
+
+      .social-links {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 100;
+      }
+
+      .social-links img {
+        width: 300px;
+        height: 75px;
+        vertical-align: middle;
+        margin-bottom: 20px;
+      }
+
+      .social-links a {
+        color: white;
+        text-decoration: none;
+        vertical-align: middle;
+        margin-right: 50px; /* Spacing between icons */
+      }
+
+            /* Media Query for phones */
+      @media screen and (max-width: 600px) {
+        .social-links img {
+          width: 200px; /* Smaller size for phones */
+          height: 50px;
+          vertical-align: middle;
+        }
+      }
+    </style>
+    <script type="module" crossorigin src="/vite-threejs-template/assets/index-cdb0114c.js"></script>
+    <link rel="stylesheet" href="/vite-threejs-template/assets/index-5884692c.css">
+  </head>
+  <body>
+    <div class="header">
+      <a href="https://github.com/alenperic" target="_blank">
+        Alen Peric
+      </a>
+    </div>
+    <!-- Main content -->
+    <main>
+      <canvas class="scene"></canvas>
+    </main>
+
+    <!-- Social Links -->
+    <div class="social-links">
+      <!-- LinkedIn Link -->
+      <a href="https://www.linkedin.com/in/alen-peric/" target="_blank">
+        <img
+          src="./img/linkedin-icon.png" 
+          alt="LinkedIn Profile Icon"
+        />
+      </a>
+      <!-- GitHub Link -->
+      <a href="https://github.com/alenperic" target="_blank">
+        <img
+          src="./img/github-icon.png" 
+          alt="GitHub Profile Icon"
+        />
+      </a>
+    </div>
+  </body>
+</html>
