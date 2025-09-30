@@ -14,6 +14,9 @@
   header{padding:28px 16px 12px;background:#0f1320;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5}
   h1{margin:0;font-size:26px}
   p.lead{margin:6px 0 0;color:var(--muted)}
+  .links{margin:8px 0 0;font-size:14px}
+  .links a{color:var(--accent);text-decoration:none;margin:0 8px}
+  .links a:hover{text-decoration:underline}
   main{max-width:1200px;margin:0 auto;padding:18px 16px 28px}
   .toolbar{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 18px}
   input[type="search"]{flex:1 1 260px;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:#0f1320;color:var(--fg);outline:none}
@@ -26,7 +29,7 @@
   .stack{font-size:12px;color:var(--muted);margin-bottom:10px}
   .badges{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 8px}
   .badge{border:1px solid var(--badge);border-radius:999px;padding:2px 8px;font-size:12px;color:#cdd7ff;white-space:nowrap}
-  .desc{margin:4px 0 10px;color:#d6dde7;font-size:14px;flex:1}
+  .desc{margin:4px 0 10px;color:#f0f4f8;font-size:14px;flex:1;line-height:1.6}
   .actions{display:flex;gap:8px;flex-wrap:wrap}
   .btn{display:inline-block;padding:8px 10px;border:1px solid var(--border);border-radius:10px;color:#cdd7ff;text-decoration:none;background:#0f1320}
   .btn:hover{border-color:var(--accent);color:#fff}
@@ -37,19 +40,27 @@
     header{background:#f4f7ff}
     input[type="search"],.chip{background:#fff}
     .badge{color:#204080}
+    .desc{color:#1a2332}
   }
 </style>
 </head>
 <body>
 <header>
-  <h1>Agentic AI & Platform Portfolio</h1>
-  <p class="lead">Selected multi-agent systems, RAG, inference serving, security tooling, and full‑stack apps.</p>
+  <h1>Alen Peric Project Portfolio</h1>
+  <div class="links">
+    <a href="https://alenperic.github.io/alenperic-homepage/" target="_blank" rel="noopener">Website</a>
+    <span style="color:var(--muted)">·</span>
+    <a href="https://alenperic.github.io/ligma-blog/" target="_blank" rel="noopener">Blog</a>
+    <span style="color:var(--muted)">·</span>
+    <a href="https://github.com/alenperic" target="_blank" rel="noopener">GitHub</a>
+  </div>
 </header>
 <main>
   <div class="toolbar">
     <input id="search" type="search" placeholder="Search projects, stacks, or features…" />
     <div class="filters">
       <span class="chip active" data-filter="all">All</span>
+      <span class="chip" data-filter="demo">🔗 Live Demos</span>
       <span class="chip" data-filter="enterprise">Enterprise & AI</span>
       <span class="chip" data-filter="security">Security & TI</span>
       <span class="chip" data-filter="web">Web & 3D</span>
@@ -67,39 +78,49 @@
 
 <script>
 const projects = [
-  {title:"LocalAIChat (iOS)",category:"enterprise",stack:"Swift/SwiftUI/Combine · Core Data · CryptoKit · MCP · i18n",badges:["Workspace isolation","AES-256 at rest","WCAG 2.2 AAA","Telemetry"],desc:"Enterprise client for local LLMs with MCP-driven UI, multi-workspace, accessibility, and subscription tiers.",links:{demo:"#",repo:"#",docs:"#"}},
-  {title:"transformer-chatbot (R&D)",category:"enterprise",stack:"Python · PyTorch/TensorFlow · Transformers · Jupyter",badges:["Custom model","Realtime learning","Eval & optimization"],desc:"End-to-end Transformer pipeline: preprocessing → training → evaluation with interactive chat interface.",links:{demo:"#",repo:"#",docs:"#"}},
+  // Projects can belong to multiple categories
+  {title:"LocalAIChat (iOS)",categories:["enterprise"],stack:"Swift · SwiftUI · Combine · Core Data · CryptoKit · MCP · WCAG",badges:["Multi-workspace","AES-256 encryption","Accessibility","Telemetry"],desc:"Enterprise iOS client for local LLMs with Model Context Protocol (MCP) integration. Features workspace isolation, end-to-end encryption at rest, WCAG 2.2 AAA compliance, subscription tiers, and comprehensive telemetry.",links:{repo:"https://github.com/alenperic/LocalAIChat-iOS",docs:"https://github.com/alenperic/LocalAIChat-iOS#readme"}},
+  {title:"ThreatLab Event Pipeline",categories:["enterprise","security","data","platform"],stack:"FastAPI · Python · Go · Kafka · Elasticsearch · Redis · Prometheus · Grafana · OpenTelemetry · LangGraph",badges:["AI agent graphs","Real-time streaming","Observability","Dashboards"],desc:"Real-time threat intelligence event pipeline with Kafka ingestion, AI-powered enrichment using LangGraph agent graphs, and comprehensive monitoring with Prometheus, Grafana, and OpenTelemetry. Features Go consumer, Python FastAPI backend, Elasticsearch storage, and custom Grafana dashboards for agent operations and tool-call metrics.",links:{repo:"https://github.com/alenperic/ThreatLab-Event-Pipeline",docs:"https://github.com/alenperic/ThreatLab-Event-Pipeline#readme"}},
+  {title:"ZigZag Privacy Social",categories:["enterprise","platform"],stack:"Next.js · TypeScript · Fastify · FastAPI · Postgres · Redis · RabbitMQ · Stripe · Ollama",badges:["E2E encryption","AI content scoring","Microservices","Stripe billing"],desc:"Privacy-first social media platform with end-to-end encryption and AI-powered content moderation using Ollama. Features decentralized identity, anonymous posting, real-time AI scam detection, content quality scoring, subscription billing with Stripe, and comprehensive microservices architecture.",links:{repo:"https://github.com/alenperic/ZigZag-Privacy-Social-Platform",docs:"https://github.com/alenperic/ZigZag-Privacy-Social-Platform#readme"}},
+  {title:"EdgeQuark Platform",categories:["enterprise","security","platform"],stack:"Flask · Python · Gunicorn · Ollama · systemd · Docker",badges:["Document fraud","AI/LLM detection","Production deploy"],desc:"Document fraud detection API powered by local LLM (Ollama). Features production-ready deployment with Gunicorn, systemd service integration, hardened installer scripts, and Docker support for secure AI-based document analysis and verification.",links:{repo:"https://github.com/alenperic/EdgeQuark-Document-Fraud-Detection-Platform",docs:"https://github.com/alenperic/EdgeQuark-Document-Fraud-Detection-Platform#readme"}},
+  {title:"Stock Sentiment Analyzer",categories:["enterprise","data"],stack:"Python · OpenAI API · News APIs · pandas · Financial Data · NLP",badges:["AI sentiment analysis","Market data","Trend signals"],desc:"Stock market sentiment analysis tool using OpenAI GPT models for NLP sentiment scoring. Aggregates news and social media data, features AI-powered sentiment analysis, multi-source data collection, trend signal generation, and screening for investment analysis with CSV exports.",links:{repo:"https://github.com/alenperic/Stock-Sentiment-Analyzer",docs:"https://github.com/alenperic/Stock-Sentiment-Analyzer#readme"}},
+  {title:"D-Vision",categories:["enterprise","security","data","platform"],stack:"FastAPI · Python · Postgres · Elasticsearch · Redis · Docker · Prometheus · Grafana · OpenTelemetry · AI",badges:["AI-powered TI","7 TI feeds","Observability","Multi-DB"],desc:"AI-powered threat intelligence aggregation platform integrating 7+ feed sources with comprehensive dashboards and machine learning enrichment. Features mock AIL services, multi-database architecture (Postgres/ES/Redis), real-time monitoring with Prometheus, Grafana, and OpenTelemetry, and Docker Compose deployment.",links:{repo:"https://github.com/alenperic/D-Vision-Threat-Intelligence",docs:"https://github.com/alenperic/D-Vision-Threat-Intelligence#readme"}},
 
-  {title:"CrowdStrike Tooling Suite",category:"security",stack:"Python · Selenium · Flask · HTML/CSS/JS",badges:["Typosquatting recon","Screenshot triage","LogScale optimization"],desc:"Automates recon and evidence capture; boosts TI workflow throughput.",links:{demo:"#",repo:"#",docs:"#"}},
-  {title:"Domain Hunter",category:"security",stack:"Python · URLScan API · requests",badges:["Continuous monitoring","Active-host detect","TI-export logs"],desc:"Detects phishing activity and suspicious hosting with color‑coded severity output.",links:{demo:"#",repo:"#",docs:"#"}},
-  {title:"PDF Tamper Analysis",category:"security",stack:"Flask · PyPDF2 · PDFPlumber",badges:["Tamper signals","Signed reports"],desc:"Web service to detect edits and generate audit‑friendly reports.",links:{demo:"#",repo:"#",docs:"#"}},
+  // Security & Threat Intelligence
+  {title:"Domain Hunter (Phish-Hunter)",categories:["security","automation"],stack:"Python · URLScan.io API · requests · WHOIS · DNS",badges:["Continuous monitoring","Threat detection","Automation"],desc:"Automated phishing domain detection tool with continuous monitoring, WHOIS/DNS analysis, and URLScan.io integration. Features active-host detection, threat intelligence export, color-coded severity output, and duplicate prevention logging.",links:{repo:"https://github.com/alenperic/Phish-Hunter",docs:"https://github.com/alenperic/Phish-Hunter#readme"}},
+  {title:"PDF Tamper Detector",categories:["security"],stack:"Python · Flask · PyPDF2 · PDFPlumber",badges:["Tamper detection","Metadata analysis","Forensic reports"],desc:"PDF forensics tool for detecting document tampering and modifications. Features digital signature verification, metadata analysis, edit detection algorithms, and generation of audit-friendly forensic reports with tamper signals.",links:{repo:"https://github.com/alenperic/PDF-Tamper-Analysis",docs:"https://github.com/alenperic/PDF-Tamper-Analysis#readme"}},
 
-  {title:"3D Website Collection",category:"web",stack:"Three.js · WebGL · Vite · SCSS · HTML5",badges:["60 FPS target","Window manager","Interactive galleries"],desc:"Modular 3D scenes and UI systems for portfolio and visual demos.",links:{demo:"#",repo:"#",docs:"#"}},
-  {title:"alenperic Homepage",category:"web",stack:"HTML · CSS · JavaScript",badges:["Responsive","Lightweight"],desc:"Personal portfolio homepage showcasing projects and skills.",links:{demo:"#",repo:"#",docs:"#"}},
-  {title:"ligma.blog",category:"web",stack:"Static site · HTML/CSS/JS",badges:["Tutorials","Tech posts"],desc:"Blog with write‑ups on AI systems, inference, and security.",links:{demo:"#",repo:"#",docs:"#"}},
-  {title:"CyberTest.us",category:"web",stack:"HTML · CSS · JavaScript · PHP",badges:["Contact forms","Services site"],desc:"Company website for cybersecurity services; responsive and email‑enabled.",links:{demo:"#",repo:"#",docs:"#"}},
-  {title:"De‑Fang",category:"web",stack:"HTML · JavaScript",badges:["Browser‑only","Security utility"],desc:"Client‑side defanger for safely sharing URLs and indicators.",links:{demo:"#",repo:"#",docs:"#"}},
+  // Web & 3D
+  {title:"3D Model Viewer",categories:["web","creative","platform"],stack:"Three.js · WebGL · JavaScript · Node.js · Express · SQLite · Docker",badges:["Real-time rendering","Multi-format","Docker deploy"],desc:"Interactive 3D model viewer platform with Three.js rendering engine. Supports OBJ, STL, FBX, GLB, and GLTF formats. Features file upload management, real-time 3D visualization, SQLite database, Express backend, and Docker deployment.",links:{repo:"https://github.com/alenperic/3D-Model-Viewer-Platform",docs:"https://github.com/alenperic/3D-Model-Viewer-Platform#readme"}},
+  {title:"Portfolio Homepage",categories:["web","creative"],stack:"HTML5 · CSS3 · JavaScript · Three.js · GitHub Pages",badges:["Responsive","Lightweight","3D effects"],desc:"Personal portfolio homepage with Three.js animated background. Features responsive design, lightweight implementation, project showcase, and skills presentation. Hosted on GitHub Pages with custom domain support.",links:{demo:"https://alenperic.github.io/alenperic-homepage/",repo:"https://github.com/alenperic/alenperic-homepage",docs:"https://github.com/alenperic/alenperic-homepage#readme"}},
+  {title:"ligma.blog",categories:["web"],stack:"Static Site · HTML · CSS · JavaScript · GitHub Pages",badges:["Security blog","Tech tutorials","Static generation"],desc:"Security-focused blog with write-ups on AI systems, LLM inference, threat intelligence, and cybersecurity. Features static site generation, responsive design, code syntax highlighting, and GitHub Pages hosting.",links:{demo:"https://alenperic.github.io/ligma-blog/",repo:"https://github.com/alenperic/ligma-blog",docs:"https://github.com/alenperic/ligma-blog#readme"}},
+  {title:"CyberTest.us",categories:["web"],stack:"HTML · CSS · JavaScript · PHP · Contact Forms",badges:["Services site","Contact forms","Email integration"],desc:"Company website for cybersecurity services. Features responsive design, PHP contact form processing, email integration, service descriptions, and professional layout for security consulting business.",links:{repo:"https://github.com/alenperic/cybertest-us-website"}},
+  {title:"De-Fang Tool",categories:["web","security"],stack:"HTML · JavaScript · GitHub Pages",badges:["Client-side only","Zero backend","Security utility"],desc:"Browser-based URL/indicator de-fanging tool for safely sharing IOCs. Features client-side processing, automatic conversion of URLs/IPs to defanged format, copy-to-clipboard, and hosted on GitHub Pages with no backend required.",links:{demo:"https://alenperic.github.io/Fang/",repo:"https://github.com/alenperic/Fang",docs:"https://github.com/alenperic/Fang#readme"}},
 
-  {title:"DLS Downloader/Monitor",category:"automation",stack:"Python · Selenium · requests",badges:["Queueing","Telemetry"],desc:"Automated downloads with queue control and system monitoring.",links:{demo:"#",repo:"#",docs:"#"}},
-  {title:"DDW Reporter",category:"automation",stack:"Python · CSV · pandas",badges:["Ingestion","Mapping","Reports"],desc:"Data processing pipeline for CSV analysis and optimized mapping.",links:{demo:"#",repo:"#",docs:"#"}},
-  {title:"Combo & Email Extractors",category:"automation",stack:"HTML · JavaScript · Web Workers",badges:["Client‑side parsing","Multithreaded"],desc:"Fast browser tools for large‑text parsing and email extraction.",links:{demo:"#",repo:"#",docs:"#"}},
-  {title:"Personal/Temp Email Scripts",category:"automation",stack:"Python · CSV",badges:["Filtering","Blocklists"],desc:"Scripts to filter personal domains and maintain temporary‑email lists.",links:{demo:"#",repo:"#",docs:"#"}},
-  {title:"Telegram Downloader",category:"automation",stack:"Python · Telegram API",badges:["Channel watch","Content fetch"],desc:"Automates monitoring/downloading of Telegram channel content.",links:{demo:"#",repo:"#",docs:"#"}},
+  // Automation & Scripting
+  {title:"DLS Monitor",categories:["automation","security"],stack:"Python · Selenium · requests · Tor · Queue Management",badges:["Dark web","Queue system","Progress tracking"],desc:"Automated dark web data leak site (DLS) downloader with Tor integration. Features queue management, resumable downloads, progress monitoring, activity logging, and secure anonymous file retrieval from active DLS listings.",links:{repo:"https://github.com/alenperic/DLS-Monitor",docs:"https://github.com/alenperic/DLS-Monitor#readme"}},
+  {title:"DDW Reporter",categories:["automation","security","data"],stack:"Python · pandas · CSV · RecordedFuture API",badges:["Dark web monitoring","Data pipeline","TI reporting"],desc:"Dark web monitoring and reporting tool with RecordedFuture API integration. Features automated CSV data ingestion, domain mapping, BIN analysis, and comprehensive threat intelligence report generation for dark web activities.",links:{repo:"https://github.com/alenperic/DDW",docs:"https://github.com/alenperic/DDW#readme"}},
+  {title:"Combo & Email Extractor",categories:["automation","web"],stack:"HTML · JavaScript · Web Workers · Regex",badges:["Client-side parsing","Multithreaded","Debouncing"],desc:"High-performance browser tool for extracting email-password combinations from large datasets. Features Web Worker multithreading, debouncing for smooth UI, regex parsing, deduplication, and zero server-side processing for privacy.",links:{demo:"https://alenperic.github.io/Combo-Extractor/",repo:"https://github.com/alenperic/Combo-Extractor",docs:"https://github.com/alenperic/Combo-Extractor#readme"}},
+  {title:"Temp Email Domain List",categories:["automation","security"],stack:"Python · CSV · Web Scraping",badges:["Domain aggregation","Validation","Blocklists"],desc:"Automated collection and validation of temporary/disposable email domains for spam filtering. Features multi-source aggregation, domain validation, allowlist/blocklist management, and CSV export for email security systems.",links:{repo:"https://github.com/alenperic/Temporary-Email-List-Generator",docs:"https://github.com/alenperic/Temporary-Email-List-Generator#readme"}},
+  {title:"Telegram Monitor",categories:["automation"],stack:"Python · Telegram API · Async · File Downloads",badges:["Channel monitoring","Auto-download","Content archival"],desc:"Automated Telegram channel monitoring with file download capabilities. Features asynchronous message tracking, automated content fetching, duplicate prevention, and comprehensive archival of channel files and media.",links:{repo:"https://github.com/alenperic/Telegram-Auto-Downloader",docs:"https://github.com/alenperic/Telegram-Auto-Downloader#readme"}},
 
-  {title:"Stock Sentiment",category:"data",stack:"Python · APIs · OpenAI",badges:["Sentiment","Trend signals"],desc:"Aggregates market data and sentiment for screening and analysis.",links:{demo:"#",repo:"#",docs:"#"}},
-  {title:"Hue Automations",category:"data",stack:"Python · Philips Hue API",badges:["Scenes","Schedules"],desc:"Smart‑lighting automation and effects scripting.",links:{demo:"#",repo:"#",docs:"#"}},
+  // Creative & Data
+  {title:"Lorcana TCG Tracker",categories:["creative","web","data"],stack:"HTML · CSS · JavaScript · LocalStorage",badges:["Collection management","UI variants","3D dice"],desc:"Interactive web-based counter and tracker for Disney Lorcana TCG. Features lore counter management, 3D animated dice roller, multiple UI themes, collection tracking, card value management, and LocalStorage persistence.",links:{demo:"https://alenperic.github.io/Lorcana-Tracker/",repo:"https://github.com/alenperic/Lorcana-Tracker",docs:"https://github.com/alenperic/Lorcana-Tracker#readme"}},
 
-  {title:"Lorcana TCG Tracker",category:"creative",stack:"HTML · CSS · JavaScript",badges:["Collection mgmt","UI variants"],desc:"Track cards, values, and stats with multiple UI versions.",links:{demo:"#",repo:"#",docs:"#"}},
+  // Platform & Infrastructure
+  {title:"Server Control Panel",categories:["platform","data"],stack:"Flask · Python · JavaScript · HTML/CSS · SSH · psutil · Prometheus",badges:["Service management","Resource monitoring","Auto-restart"],desc:"Web-based server management dashboard with real-time monitoring. Features service start/stop controls, GPU/CPU/disk monitoring with Prometheus metrics, deep-linking to running apps, SSH command execution, automatic service recovery, and responsive web interface.",links:{repo:"https://github.com/alenperic/AI-Server-Control-Panel",docs:"https://github.com/alenperic/AI-Server-Control-Panel#readme"}},
 
-  {title:"LLM Serving Stack",category:"platform",stack:"vLLM · TensorRT‑LLM · TGI · PyTorch",badges:["Batching/Streaming","CUDA optimizations"],desc:"Production‑style LLM serving with OpenAI‑compatible endpoints.",links:{demo:"#",repo:"#",docs:"#"}},
-  {title:"LibreChat",category:"platform",stack:"React/Next.js · Node · MongoDB · Docker",badges:["Agents & tools","Multimodal"],desc:"Multi‑model chat platform with Assistants API compatibility and MCP support.",links:{demo:"#",repo:"#",docs:"#"}},
-  {title:"serena (AI Coding Agent)",category:"platform",stack:"Python 3.12 · LSP · MCP",badges:["13+ langs","Project memory"],desc:"Language‑server‑powered coding assistant with orchestrator modes.",links:{demo:"#",repo:"#",docs:"#"}},
-  {title:"threat‑lab",category:"platform",stack:"FastAPI · Go · Kafka · Redis · ES · Prometheus · Grafana",badges:["Streaming TI","Agent graphs"],desc:"Real‑time ingestion, enrichment, and analysis with dashboards and tool‑call metrics.",links:{demo:"#",repo:"#",docs:"#"}},
-  {title:"D‑Vision",category:"platform",stack:"FastAPI · Postgres · ES · Redis · Prometheus · Grafana",badges:["7 feeds","Mock AIL services"],desc:"TI platform integrating multiple feeds with multi‑DB architecture and observability.",links:{demo:"#",repo:"#",docs:"#"}},
-  {title:"edgequark‑platform",category:"platform",stack:"Flask · Gunicorn · Ollama",badges:["Fraud detect","systemd"],desc:"Document fraud detection API with hardened deployment and installer scripts.",links:{demo:"#",repo:"#",docs:"#"}},
-  {title:"VisionX",category:"platform",stack:"Docker · Python · FastAPI",badges:["Auth","MCP servers","Ollama mgr"],desc:"Vision AI processing platform with compose‑based infra and service separation.",links:{demo:"#",repo:"#",docs:"#"}},
-  {title:"ZigZag (Privacy Social)",category:"platform",stack:"Next.js · Fastify · FastAPI · Postgres · Redis · RabbitMQ",badges:["AI scoring","Anti‑scam","Billing"],desc:"Privacy‑first social platform with AI content scoring and Stripe payments.",links:{demo:"#",repo:"#",docs:"#"}},
-  {title:"server‑control‑panel",category:"platform",stack:"Flask · HTML/JS",badges:["Service mgmt","GPU/load/disk"],desc:"Dashboard to start/stop services and deep‑link to running apps.",links:{demo:"#",repo:"#",docs:"#"}}
+  // Additional AI & Research Projects
+  {title:"PyGPT Chatbot",categories:["enterprise"],stack:"Python · GPT · Web Scraping · Real-time Learning",badges:["Chatbot","Web scraping","Adaptive learning"],desc:"Python-based chatbot featuring real-time learning from web-scraped data for interactive and evolving conversational experiences. Implements adaptive learning algorithms and dynamic knowledge base updates for context-aware responses.",links:{repo:"https://github.com/alenperic/PyGPT",docs:"https://github.com/alenperic/PyGPT#readme"}},
+  {title:"Debian PyTorch GPU Setup",categories:["platform","enterprise"],stack:"Docker · Podman · CUDA 12.8 · PyTorch · vLLM · FlashInfer · AWQ/FP4",badges:["Blackwell GPU","CUDA optimization","Quantization"],desc:"Comprehensive tutorial for Debian 12 building CUDA 12.8-optimized PyTorch images and launching vLLM with FlashInfer and AWQ/FP4-quantized models on NVIDIA Blackwell GPUs. Features Docker/Podman deployment for production LLM inference.",links:{repo:"https://github.com/alenperic/Debian-PyTorch-RTX5070Ti",docs:"https://github.com/alenperic/Debian-PyTorch-RTX5070Ti#readme"}},
+
+  // Security Tools & Utilities
+  {title:"LogScale Query Optimizer",categories:["security","automation"],stack:"HTML · JavaScript · LogScale · Query Optimization",badges:["Real-time feedback","Best practices","Interactive"],desc:"Interactive tool for optimizing LogScale queries with real-time feedback and best practice recommendations. Features syntax validation, performance suggestions, and query pattern analysis for improved threat hunting and log analysis efficiency.",links:{repo:"https://github.com/alenperic/LogScale-Query-Optimizing-Tool",docs:"https://github.com/alenperic/LogScale-Query-Optimizing-Tool#readme"}},
+  {title:"SSH Post-Quantum Crypto",categories:["security","platform"],stack:"Bash · SSH · Post-Quantum Cryptography · NIST PQC",badges:["PQC migration","Quantum-safe","Automation"],desc:"Automates secure migration of SSH keys and configurations to post-quantum cryptography (PQC) for both servers and clients. Implements NIST PQC standards for quantum-resistant encryption, featuring backup strategies and rollback capabilities.",links:{repo:"https://github.com/alenperic/SSH-Post-Quantum-Cryptography-Upgrade-Script",docs:"https://github.com/alenperic/SSH-Post-Quantum-Cryptography-Upgrade-Script#readme"}},
+  {title:"Email Extractor Pro",categories:["automation","web"],stack:"HTML · JavaScript · Regex · LocalStorage",badges:["Lowercase conversion","Deduplication","Client-side"],desc:"Enhanced HTML5 email extractor tool with automatic lowercase conversion and duplicate removal. Processes text input locally without server-side processing, featuring clean UI, copy-to-clipboard, and ensures unique email list generation for privacy-focused extraction.",links:{demo:"https://alenperic.github.io/Email-Extractor-2/",repo:"https://github.com/alenperic/Email-Extractor-2",docs:"https://github.com/alenperic/Email-Extractor-2#readme"}},
+
+  // Creative & Fun Projects
+  {title:"Cyber Buzzword Generator",categories:["creative","web"],stack:"HTML · JavaScript · Random Generation",badges:["Fun tool","Cybersecurity","Buzzwords"],desc:"Entertaining cyber buzzword generator creating realistic-sounding cybersecurity jargon. Perfect for presentations, meetings, or satirical commentary on industry terminology. Features randomized combinations of security terms and marketing speak.",links:{demo:"https://alenperic.github.io/Cybuzzword-Generator/",repo:"https://github.com/alenperic/Cybuzzword-Generator",docs:"https://github.com/alenperic/Cybuzzword-Generator#readme"}}
 ];
 
 const grid = document.getElementById('grid');
@@ -107,7 +128,11 @@ function renderCards(filter="all", q=""){
   grid.innerHTML = "";
   const query = q.trim().toLowerCase();
   projects
-    .filter(p => filter==="all" ? true : p.category===filter)
+    .filter(p => {
+      if(filter==="all") return true;
+      if(filter==="demo") return p.links.demo && p.links.demo !== "#";
+      return p.categories.includes(filter);
+    })
     .filter(p => {
       if(!query) return true;
       const hay = (p.title + " " + p.stack + " " + p.badges.join(" ") + " " + p.desc).toLowerCase();
@@ -116,16 +141,27 @@ function renderCards(filter="all", q=""){
     .forEach(p => {
       const card = document.createElement('div');
       card.className = "card";
-      card.setAttribute("data-category", p.category);
+      card.setAttribute("data-categories", p.categories.join(","));
+
+      // Build action buttons only for valid links
+      const actions = [];
+      if(p.links.demo && p.links.demo !== "#") {
+        actions.push(`<a class="btn" href="${p.links.demo}" target="_blank" rel="noopener">Demo</a>`);
+      }
+      if(p.links.repo && p.links.repo !== "#") {
+        actions.push(`<a class="btn" href="${p.links.repo}" target="_blank" rel="noopener">Repo</a>`);
+      }
+      if(p.links.docs && p.links.docs !== "#") {
+        actions.push(`<a class="btn" href="${p.links.docs}" target="_blank" rel="noopener">Docs</a>`);
+      }
+
       card.innerHTML = `
         <h3>${p.title}</h3>
         <div class="stack">${p.stack}</div>
         <div class="badges">${p.badges.map(b=>`<span class="badge">${b}</span>`).join("")}</div>
         <div class="desc">${p.desc}</div>
         <div class="actions">
-          <a class="btn" href="${p.links.demo}" target="_blank" rel="noopener">Demo</a>
-          <a class="btn" href="${p.links.repo}" target="_blank" rel="noopener">Repo</a>
-          <a class="btn" href="${p.links.docs}" target="_blank" rel="noopener">Docs</a>
+          ${actions.join("")}
         </div>
       `;
       grid.appendChild(card);
