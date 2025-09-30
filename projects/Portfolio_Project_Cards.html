@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Alen Peric — Project Portfolio Cards</title>
+<style>
+  :root{
+    --bg:#0b0e14; --panel:#121829; --border:#1c2541; --fg:#e6e6e6; --muted:#aab2c8; --accent:#8ab4ff;
+    --badge:#2b365d; --shadow:0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  header{padding:28px 16px 12px;background:#0f1320;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5}
+  h1{margin:0;font-size:26px}
+  p.lead{margin:6px 0 0;color:var(--muted)}
+  main{max-width:1200px;margin:0 auto;padding:18px 16px 28px}
+  .toolbar{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 18px}
+  input[type="search"]{flex:1 1 260px;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:#0f1320;color:var(--fg);outline:none}
+  .filters{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{border:1px solid var(--border);background:#0f1320;padding:6px 10px;border-radius:999px;color:var(--muted);cursor:pointer;user-select:none}
+  .chip.active{border-color:var(--accent);color:#cfe0ff}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:14px;box-shadow:var(--shadow);display:flex;flex-direction:column;min-height:190px}
+  .card h3{margin:0 0 6px 0;font-size:17px}
+  .stack{font-size:12px;color:var(--muted);margin-bottom:10px}
+  .badges{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 8px}
+  .badge{border:1px solid var(--badge);border-radius:999px;padding:2px 8px;font-size:12px;color:#cdd7ff;white-space:nowrap}
+  .desc{margin:4px 0 10px;color:#d6dde7;font-size:14px;flex:1}
+  .actions{display:flex;gap:8px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:8px 10px;border:1px solid var(--border);border-radius:10px;color:#cdd7ff;text-decoration:none;background:#0f1320}
+  .btn:hover{border-color:var(--accent);color:#fff}
+  .section{margin:18px 0 8px 0;border-left:3px solid var(--accent);padding-left:10px;color:#d7e6ff;font-weight:600}
+  footer{color:var(--muted);text-align:center;padding:22px 12px}
+  @media (prefers-color-scheme: light){
+    :root{--bg:#f7f9ff;--panel:#ffffff;--border:#dde3f3;--fg:#0b1220;--muted:#5a6985;--accent:#1b6bff;--badge:#d8e2ff}
+    header{background:#f4f7ff}
+    input[type="search"],.chip{background:#fff}
+    .badge{color:#204080}
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Agentic AI & Platform Portfolio</h1>
+  <p class="lead">Selected multi-agent systems, RAG, inference serving, security tooling, and full‑stack apps.</p>
+</header>
+<main>
+  <div class="toolbar">
+    <input id="search" type="search" placeholder="Search projects, stacks, or features…" />
+    <div class="filters">
+      <span class="chip active" data-filter="all">All</span>
+      <span class="chip" data-filter="enterprise">Enterprise & AI</span>
+      <span class="chip" data-filter="security">Security & TI</span>
+      <span class="chip" data-filter="web">Web & 3D</span>
+      <span class="chip" data-filter="automation">Automation</span>
+      <span class="chip" data-filter="data">Data & Monitoring</span>
+      <span class="chip" data-filter="creative">Creative</span>
+      <span class="chip" data-filter="platform">Platform Ops</span>
+    </div>
+  </div>
+
+  <div class="section">Projects</div>
+  <div id="grid" class="grid"></div>
+</main>
+<footer>© Alen Peric — Built for portfolio use. Edit links and descriptions as needed.</footer>
+
+<script>
+const projects = [
+  {title:"LocalAIChat (iOS)",category:"enterprise",stack:"Swift/SwiftUI/Combine · Core Data · CryptoKit · MCP · i18n",badges:["Workspace isolation","AES-256 at rest","WCAG 2.2 AAA","Telemetry"],desc:"Enterprise client for local LLMs with MCP-driven UI, multi-workspace, accessibility, and subscription tiers.",links:{demo:"#",repo:"#",docs:"#"}},
+  {title:"transformer-chatbot (R&D)",category:"enterprise",stack:"Python · PyTorch/TensorFlow · Transformers · Jupyter",badges:["Custom model","Realtime learning","Eval & optimization"],desc:"End-to-end Transformer pipeline: preprocessing → training → evaluation with interactive chat interface.",links:{demo:"#",repo:"#",docs:"#"}},
+
+  {title:"CrowdStrike Tooling Suite",category:"security",stack:"Python · Selenium · Flask · HTML/CSS/JS",badges:["Typosquatting recon","Screenshot triage","LogScale optimization"],desc:"Automates recon and evidence capture; boosts TI workflow throughput.",links:{demo:"#",repo:"#",docs:"#"}},
+  {title:"Domain Hunter",category:"security",stack:"Python · URLScan API · requests",badges:["Continuous monitoring","Active-host detect","TI-export logs"],desc:"Detects phishing activity and suspicious hosting with color‑coded severity output.",links:{demo:"#",repo:"#",docs:"#"}},
+  {title:"PDF Tamper Analysis",category:"security",stack:"Flask · PyPDF2 · PDFPlumber",badges:["Tamper signals","Signed reports"],desc:"Web service to detect edits and generate audit‑friendly reports.",links:{demo:"#",repo:"#",docs:"#"}},
+
+  {title:"3D Website Collection",category:"web",stack:"Three.js · WebGL · Vite · SCSS · HTML5",badges:["60 FPS target","Window manager","Interactive galleries"],desc:"Modular 3D scenes and UI systems for portfolio and visual demos.",links:{demo:"#",repo:"#",docs:"#"}},
+  {title:"alenperic Homepage",category:"web",stack:"HTML · CSS · JavaScript",badges:["Responsive","Lightweight"],desc:"Personal portfolio homepage showcasing projects and skills.",links:{demo:"#",repo:"#",docs:"#"}},
+  {title:"ligma.blog",category:"web",stack:"Static site · HTML/CSS/JS",badges:["Tutorials","Tech posts"],desc:"Blog with write‑ups on AI systems, inference, and security.",links:{demo:"#",repo:"#",docs:"#"}},
+  {title:"CyberTest.us",category:"web",stack:"HTML · CSS · JavaScript · PHP",badges:["Contact forms","Services site"],desc:"Company website for cybersecurity services; responsive and email‑enabled.",links:{demo:"#",repo:"#",docs:"#"}},
+  {title:"De‑Fang",category:"web",stack:"HTML · JavaScript",badges:["Browser‑only","Security utility"],desc:"Client‑side defanger for safely sharing URLs and indicators.",links:{demo:"#",repo:"#",docs:"#"}},
+
+  {title:"DLS Downloader/Monitor",category:"automation",stack:"Python · Selenium · requests",badges:["Queueing","Telemetry"],desc:"Automated downloads with queue control and system monitoring.",links:{demo:"#",repo:"#",docs:"#"}},
+  {title:"DDW Reporter",category:"automation",stack:"Python · CSV · pandas",badges:["Ingestion","Mapping","Reports"],desc:"Data processing pipeline for CSV analysis and optimized mapping.",links:{demo:"#",repo:"#",docs:"#"}},
+  {title:"Combo & Email Extractors",category:"automation",stack:"HTML · JavaScript · Web Workers",badges:["Client‑side parsing","Multithreaded"],desc:"Fast browser tools for large‑text parsing and email extraction.",links:{demo:"#",repo:"#",docs:"#"}},
+  {title:"Personal/Temp Email Scripts",category:"automation",stack:"Python · CSV",badges:["Filtering","Blocklists"],desc:"Scripts to filter personal domains and maintain temporary‑email lists.",links:{demo:"#",repo:"#",docs:"#"}},
+  {title:"Telegram Downloader",category:"automation",stack:"Python · Telegram API",badges:["Channel watch","Content fetch"],desc:"Automates monitoring/downloading of Telegram channel content.",links:{demo:"#",repo:"#",docs:"#"}},
+
+  {title:"Stock Sentiment",category:"data",stack:"Python · APIs · OpenAI",badges:["Sentiment","Trend signals"],desc:"Aggregates market data and sentiment for screening and analysis.",links:{demo:"#",repo:"#",docs:"#"}},
+  {title:"Hue Automations",category:"data",stack:"Python · Philips Hue API",badges:["Scenes","Schedules"],desc:"Smart‑lighting automation and effects scripting.",links:{demo:"#",repo:"#",docs:"#"}},
+
+  {title:"Lorcana TCG Tracker",category:"creative",stack:"HTML · CSS · JavaScript",badges:["Collection mgmt","UI variants"],desc:"Track cards, values, and stats with multiple UI versions.",links:{demo:"#",repo:"#",docs:"#"}},
+
+  {title:"LLM Serving Stack",category:"platform",stack:"vLLM · TensorRT‑LLM · TGI · PyTorch",badges:["Batching/Streaming","CUDA optimizations"],desc:"Production‑style LLM serving with OpenAI‑compatible endpoints.",links:{demo:"#",repo:"#",docs:"#"}},
+  {title:"LibreChat",category:"platform",stack:"React/Next.js · Node · MongoDB · Docker",badges:["Agents & tools","Multimodal"],desc:"Multi‑model chat platform with Assistants API compatibility and MCP support.",links:{demo:"#",repo:"#",docs:"#"}},
+  {title:"serena (AI Coding Agent)",category:"platform",stack:"Python 3.12 · LSP · MCP",badges:["13+ langs","Project memory"],desc:"Language‑server‑powered coding assistant with orchestrator modes.",links:{demo:"#",repo:"#",docs:"#"}},
+  {title:"threat‑lab",category:"platform",stack:"FastAPI · Go · Kafka · Redis · ES · Prometheus · Grafana",badges:["Streaming TI","Agent graphs"],desc:"Real‑time ingestion, enrichment, and analysis with dashboards and tool‑call metrics.",links:{demo:"#",repo:"#",docs:"#"}},
+  {title:"D‑Vision",category:"platform",stack:"FastAPI · Postgres · ES · Redis · Prometheus · Grafana",badges:["7 feeds","Mock AIL services"],desc:"TI platform integrating multiple feeds with multi‑DB architecture and observability.",links:{demo:"#",repo:"#",docs:"#"}},
+  {title:"edgequark‑platform",category:"platform",stack:"Flask · Gunicorn · Ollama",badges:["Fraud detect","systemd"],desc:"Document fraud detection API with hardened deployment and installer scripts.",links:{demo:"#",repo:"#",docs:"#"}},
+  {title:"VisionX",category:"platform",stack:"Docker · Python · FastAPI",badges:["Auth","MCP servers","Ollama mgr"],desc:"Vision AI processing platform with compose‑based infra and service separation.",links:{demo:"#",repo:"#",docs:"#"}},
+  {title:"ZigZag (Privacy Social)",category:"platform",stack:"Next.js · Fastify · FastAPI · Postgres · Redis · RabbitMQ",badges:["AI scoring","Anti‑scam","Billing"],desc:"Privacy‑first social platform with AI content scoring and Stripe payments.",links:{demo:"#",repo:"#",docs:"#"}},
+  {title:"server‑control‑panel",category:"platform",stack:"Flask · HTML/JS",badges:["Service mgmt","GPU/load/disk"],desc:"Dashboard to start/stop services and deep‑link to running apps.",links:{demo:"#",repo:"#",docs:"#"}}
+];
+
+const grid = document.getElementById('grid');
+function renderCards(filter="all", q=""){
+  grid.innerHTML = "";
+  const query = q.trim().toLowerCase();
+  projects
+    .filter(p => filter==="all" ? true : p.category===filter)
+    .filter(p => {
+      if(!query) return true;
+      const hay = (p.title + " " + p.stack + " " + p.badges.join(" ") + " " + p.desc).toLowerCase();
+      return hay.includes(query);
+    })
+    .forEach(p => {
+      const card = document.createElement('div');
+      card.className = "card";
+      card.setAttribute("data-category", p.category);
+      card.innerHTML = `
+        <h3>${p.title}</h3>
+        <div class="stack">${p.stack}</div>
+        <div class="badges">${p.badges.map(b=>`<span class="badge">${b}</span>`).join("")}</div>
+        <div class="desc">${p.desc}</div>
+        <div class="actions">
+          <a class="btn" href="${p.links.demo}" target="_blank" rel="noopener">Demo</a>
+          <a class="btn" href="${p.links.repo}" target="_blank" rel="noopener">Repo</a>
+          <a class="btn" href="${p.links.docs}" target="_blank" rel="noopener">Docs</a>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+}
+renderCards();
+
+const chips = Array.from(document.querySelectorAll(".chip"));
+chips.forEach(ch => ch.addEventListener("click", e => {
+  chips.forEach(c => c.classList.remove("active"));
+  ch.classList.add("active");
+  const filter = ch.dataset.filter;
+  renderCards(filter, document.getElementById("search").value);
+}));
+document.getElementById("search").addEventListener("input", e => {
+  const active = document.querySelector(".chip.active").dataset.filter;
+  renderCards(active, e.target.value);
+});
+</script>
+</body>
+</html>
