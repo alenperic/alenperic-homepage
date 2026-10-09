@@ -1,2 +1,0 @@
-# Preserve the vCard's required CRLF line endings byte for byte.
-*.vcf -text whitespace=cr-at-eol
